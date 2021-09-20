@@ -1,0 +1,4 @@
+name: hw1
+dependencies:
+  - python=3.6   # or 2.7
+  - boto3=1.17.87
