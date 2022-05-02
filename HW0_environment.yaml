@@ -2,3 +2,4 @@ name: hw0
 dependencies:
   - python=3.6   # or 2.7
   - numpy=1.9.*
+
