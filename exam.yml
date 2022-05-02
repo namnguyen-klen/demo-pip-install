@@ -1,0 +1,25 @@
+---
+resources:
+- name: demo
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/namnguyen-klen/demo-pip-install
+    branch: IM-98
+    private_key: ((private-repo-key))
+
+jobs:
+- name: hello
+  public: true
+  plan:
+  - get: demo
+    trigger: true
+  - task: simple-task
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source: { repository: busybox }
+      run:
+        path: echo
+        args: ["Hello world!"]
