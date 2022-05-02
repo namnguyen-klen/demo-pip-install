@@ -3,6 +3,8 @@ resources:
 - name: demo
   type: git
   icon: github
+  check_every: 1m
+  expose_build_created_by: true
   source:
     uri: https://github.com/namnguyen-klen/demo-pip-install
     branch: IM-98
