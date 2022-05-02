@@ -2,11 +2,10 @@
 resources:
 - name: demo
   type: git
-  icon: github
   check_every: 1m
   expose_build_created_by: true
   source:
-    uri: https://github.com/namnguyen-klen/demo-pip-install
+    uri: https://github.com/namnguyen-klen/demo-pip-install.git
     branch: IM-98
     private_key: ((private-repo-key))
 
