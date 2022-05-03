@@ -1,0 +1,43 @@
+---
+resource_types:
+  - name: pull-request
+    type: registry-image
+    source:
+      repository: teliaoss/github-pr-resource
+
+resources:
+- name: pr
+  type: pull-request
+  source:
+    repository: namnguyen-klen/demo-pip-install
+    access_token: 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
+    base_branch: main
+    state: ["OPEN"]
+# - name: demo
+#   type: git
+#   check_every: 1m
+#   expose_build_created_by: true
+#   source:
+#     uri: https://github.com/namnguyen-klen/demo-pip-install.git
+#     branch: IM-98
+#     private_key: ((private-repo-key))
+
+jobs:
+- name: hello
+  public: true
+  plan:
+  - get: pr
+    trigger: true
+    version: every
+    params:
+      list_changed_files: true
+  - task: simple-task
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source: { repository: busybox }
+      run:
+        path: ls
+        args:
+          - la
